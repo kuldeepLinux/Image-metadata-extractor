@@ -6,6 +6,7 @@ Extract EXIF metadata from image - camera,GPS,date,setting. 100% browser based
 
 Extract hidden metadata from images — camera info, GPS location, date, settings, and more. Works fully in the browser — no upload, no server.
 
+
 ## 🚀 Live Demo
 
 [https://kuldeeplinux.github.io/image-metadata-extractor/](https://kuldeeplinux.github.io/image-metadata-extractor/)
