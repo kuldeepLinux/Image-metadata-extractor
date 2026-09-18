@@ -1,0 +1,328 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', 'Consolas', monospace;
+}
+
+body {
+    background: #0a0e0a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #00ff41;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Scanlines effect */
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 65, 0.03) 0px,
+        rgba(0, 255, 65, 0.03) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    z-index: 1;
+}
+
+.container {
+    background: #0d130d;
+    border: 1px solid #00ff41;
+    border-radius: 8px;
+    padding: 0;
+    max-width: 850px;
+    width: 100%;
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.2), inset 0 0 20px rgba(0, 255, 65, 0.05);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+/* Terminal bar */
+.terminal-bar {
+    background: #1a1f1a;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #00ff41;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.terminal-title {
+    margin-left: 10px;
+    font-size: 0.8rem;
+    color: #00ff41;
+    opacity: 0.7;
+}
+
+header {
+    padding: 30px 30px 20px;
+    border-bottom: 1px dashed rgba(0, 255, 65, 0.3);
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: #00ff41;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.prompt {
+    color: #ffbd2e;
+}
+
+.typing {
+    color: #00ff41;
+}
+
+.cursor {
+    animation: blink 1s infinite;
+    color: #00ff41;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.subtitle {
+    color: #00ff41;
+    opacity: 0.6;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.credit {
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: 8px;
+}
+
+.name {
+    color: #ffbd2e;
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(255, 189, 46, 0.6);
+}
+
+/* Upload box */
+.upload-box {
+    margin: 25px 30px;
+    border: 2px dashed #00ff41;
+    border-radius: 6px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: rgba(0, 255, 65, 0.02);
+}
+
+.upload-box:hover, .upload-box.dragover {
+    background: rgba(0, 255, 65, 0.08);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3) inset;
+    transform: scale(1.01);
+}
+
+.upload-content .icon {
+    font-size: 1.5rem;
+    color: #00ff41;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.8);
+}
+
+.upload-content p {
+    color: #00ff41;
+    margin: 5px 0;
+    font-size: 0.95rem;
+}
+
+.upload-content .small {
+    font-size: 0.75rem;
+    color: #00ff41;
+    opacity: 0.5;
+}
+
+/* Preview */
+.preview {
+    margin: 0 30px 20px;
+    text-align: center;
+}
+
+.preview img {
+    max-width: 100%;
+    max-height: 280px;
+    border: 1px solid #00ff41;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+    filter: contrast(1.05);
+}
+
+/* Results */
+.results {
+    margin: 20px 30px 30px;
+    padding: 20px;
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    border-radius: 6px;
+    background: rgba(0, 255, 65, 0.02);
+}
+
+.results h2 {
+    color: #ffbd2e;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    text-shadow: 0 0 8px rgba(255, 189, 46, 0.5);
+}
+
+.metadata-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-left: 2px solid #00ff41;
+    margin-bottom: 6px;
+    background: rgba(0, 255, 65, 0.03);
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.metadata-item:hover {
+    background: rgba(0, 255, 65, 0.08);
+    transform: translateX(3px);
+}
+
+.metadata-item .label {
+    color: #00ff41;
+    font-weight: bold;
+}
+
+.metadata-item .value {
+    color: #b8ffb8;
+    text-align: right;
+    word-break: break-all;
+    max-width: 60%;
+}
+
+.metadata-item.gps {
+    border-left-color: #ff5f56;
+    background: rgba(255, 95, 86, 0.05);
+}
+
+.metadata-item.gps .label {
+    color: #ff5f56;
+}
+
+.metadata-item.gps a {
+    color: #ff5f56;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px dotted #ff5f56;
+}
+
+.metadata-item.gps a:hover {
+    color: #ffbd2e;
+    border-bottom-color: #ffbd2e;
+}
+
+.no-metadata {
+    text-align: center;
+    padding: 25px;
+    color: #888;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Buttons */
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: 1px solid #00ff41;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: transparent;
+    color: #00ff41;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background: #00ff41;
+    color: #0a0e0a;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+}
+
+button.secondary {
+    border-color: #888;
+    color: #888;
+}
+
+button.secondary:hover {
+    background: #888;
+    color: #0a0e0a;
+    box-shadow: 0 0 15px rgba(136, 136, 136, 0.4);
+}
+
+/* Footer */
+footer {
+    padding: 20px 30px;
+    border-top: 1px dashed rgba(0, 255, 65, 0.3);
+    text-align: center;
+    color: #00ff41;
+    opacity: 0.6;
+    font-size: 0.8rem;
+}
+
+.credit-footer {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0e0a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00ff41;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffbd2e;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    h1 { font-size: 1.3rem; }
+    .metadata-item { font-size: 0.75rem; }
+    .upload-box { padding: 30px 15px; }
+}
