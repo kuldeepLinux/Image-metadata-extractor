@@ -9,7 +9,7 @@ Extract hidden metadata from images — camera info, GPS location, date, setting
 
 ## 🚀 Live Demo
 
-[https://kuldeeplinux.github.io/Image-metadata-extractor/](https://kuldeeplinux.github.io/Image-metadata-extractor/)
+[https://kuldeeplinux.github.io/Image-metadata-extractor/] (https://kuldeeplinux.github.io/Image-metadata-extractor/)
 
 ## ✨ Features
 
