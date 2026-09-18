@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Metadata Extractor | by Kuldeep</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="container">
+        <header>
+            <div class="terminal-bar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title">root@kuldeep:~/metadata-extractor</span>
+            </div>
+            <h1>
+                <span class="prompt">$</span> 
+                <span class="typing">Image Metadata Extractor</span>
+                <span class="cursor">_</span>
+            </h1>
+            <p class="subtitle">// Extract hidden EXIF data — camera, GPS, date, settings</p>
+            <p class="credit">Made by <span class="name">Kuldeep</span></p>
+        </header>
+
+        <div class="upload-box" id="uploadBox">
+            <input type="file" id="fileInput" accept="image/*" hidden>
+            <div class="upload-content">
+                <div class="icon">[ + ]</div>
+                <p><strong>DROP IMAGE</strong> or click to upload</p>
+                <p class="small">JPG · PNG · TIFF · HEIC</p>
+            </div>
+        </div>
+
+        <div class="preview" id="preview" style="display:none;">
+            <img id="previewImg" alt="preview">
+        </div>
+
+        <div class="results" id="results" style="display:none;">
+            <h2><span class="prompt">$</span> cat metadata.txt</h2>
+            <div id="metadataList"></div>
+            <button id="clearBtn" class="secondary">[ CLEAR ]</button>
+        </div>
+
+        <footer>
+            <p>🔒 100% browser-based — no upload, no server</p>
+            <p class="credit-footer">Made by <span class="name">Kuldeep</span></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
